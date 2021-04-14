@@ -13,7 +13,7 @@ android {
     buildToolsVersion ConfigVersions.buildToolsVersion
 
     defaultConfig {
-        applicationId "me.lazy_assedninja.sample"
+        applicationId "me.lazy_assedninja.utils"
         minSdkVersion ConfigVersions.minSampleSdkVersion
         targetSdkVersion ConfigVersions.targetSdkVersion
         versionCode ConfigVersions.versionCode

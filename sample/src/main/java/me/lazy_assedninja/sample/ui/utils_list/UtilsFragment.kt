@@ -19,7 +19,6 @@ import me.lazy_assedninja.sample.utils.autoCleared
 import me.lazy_assedninja.sample.view_model.ViewModelFactory
 import javax.inject.Inject
 
-
 class UtilsFragment : BaseFragment() {
 
     var binding by autoCleared<FragmentUtilsBinding>()

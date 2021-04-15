@@ -9,10 +9,8 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import me.lazy_assedninja.library_dagger.ui.BaseFragment
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
@@ -90,20 +88,13 @@ class EncryptFragment : BaseFragment() {
             }
         }
 
-        binding.btnEncrypt.setOnClickListener {
+        binding.btEncrypt.setOnClickListener {
             viewModel.isLoading.set(true)
             handleData(it, true)
         }
-        binding.btnDecrypt.setOnClickListener {
+        binding.btDecrypt.setOnClickListener {
             viewModel.isLoading.set(true)
             handleData(it, false)
-        }
-
-        // Handle the back button click event
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            findNavController().navigate(
-                EncryptFragmentDirections.backToMainFragment()
-            )
         }
 
         viewModel.result.observe(viewLifecycleOwner) { result ->

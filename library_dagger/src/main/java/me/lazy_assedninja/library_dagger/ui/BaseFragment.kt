@@ -5,7 +5,6 @@ import android.os.IBinder
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 
-
 abstract class BaseFragment : Fragment() {
 
     protected fun dismissKeyboard(windowToken: IBinder) {

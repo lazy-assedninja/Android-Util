@@ -22,12 +22,5 @@
         android:id="@+id/encrypt_fragment"
         android:name="me.lazy_assedninja.sample.ui.encrypt.EncryptFragment"
         android:label="@string/navigation_encrypt_fragment"
-        tools:layout="@layout/fragment_encrypt">
-
-        <action
-            android:id="@+id/backToMainFragment"
-            app:destination="@id/utils_fragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
-    </fragment>
+        tools:layout="@layout/fragment_encrypt" />
 </navigation>

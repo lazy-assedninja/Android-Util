@@ -11,6 +11,7 @@ import javax.inject.Inject
 class EncryptViewModel @Inject constructor(private val encryptUtils: EncryptUtils) : ViewModel() {
 
     val isLoading = ObservableBoolean(false)
+
     val result: MediatorLiveData<String> = MediatorLiveData()
 
     fun encrypt(type: String, data: String, key: String, transformation: String, iv: String?) {

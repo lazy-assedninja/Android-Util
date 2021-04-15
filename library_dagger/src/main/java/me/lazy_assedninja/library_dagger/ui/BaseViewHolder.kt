@@ -3,7 +3,6 @@ package me.lazy_assedninja.library_dagger.ui
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-
 /**
  * A generic ViewHolder that works with a [ViewDataBinding].
  * @param <T> The type of the ViewDataBinding.

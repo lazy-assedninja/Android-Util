@@ -12,7 +12,6 @@
     <string name="navigation_encrypt_fragment">EncryptFragment</string>
 
     <!-- Encrypt Title -->
-    <string name="title_file_choose">File Choose</string>
     <string name="title_parameter_settings">Parameter Settings</string>
 
     <!-- Encrypt Button -->

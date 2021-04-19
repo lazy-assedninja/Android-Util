@@ -22,12 +22,12 @@ import javax.inject.Inject
 class UtilsFragment : BaseFragment() {
 
     var binding by autoCleared<FragmentUtilsBinding>()
-    var adapter by autoCleared<UtilsListAdapter>()
+    private var adapter by autoCleared<UtilsListAdapter>()
 
     @Inject
     lateinit var executorUtils: ExecutorUtils
 
-    var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
+    private var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory

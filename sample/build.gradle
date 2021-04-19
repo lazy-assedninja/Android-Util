@@ -61,8 +61,6 @@ dependencies {
 
     // Dagger
     implementation Google.dagger
-    implementation Google.daggerAndroid
-    kapt Google.daggerAndroidProcessor
     kapt Google.daggerCompiler
 
     // Gson

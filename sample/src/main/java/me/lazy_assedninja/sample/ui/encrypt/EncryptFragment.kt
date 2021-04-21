@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import me.lazy_assedninja.library_dagger.ui.BaseFragment
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
@@ -27,7 +28,7 @@ class EncryptFragment : BaseFragment() {
     private var dataBindingComponent = FragmentDataBindingComponent(this)
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel: EncryptViewModel by viewModels {
         viewModelFactory

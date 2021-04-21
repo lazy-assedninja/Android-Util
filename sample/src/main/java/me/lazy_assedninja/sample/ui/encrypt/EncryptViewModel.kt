@@ -2,6 +2,7 @@ package me.lazy_assedninja.sample.ui.encrypt
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -12,7 +13,7 @@ class EncryptViewModel @Inject constructor(private val encryptUtils: EncryptUtil
 
     val isLoading = ObservableBoolean(false)
 
-    val result: MediatorLiveData<String> = MediatorLiveData()
+    val result: MutableLiveData<String> = MutableLiveData()
 
     fun encrypt(type: String, data: String, key: String, transformation: String, iv: String?) {
         viewModelScope.launch {

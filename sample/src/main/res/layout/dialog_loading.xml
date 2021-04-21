@@ -47,6 +47,6 @@
             android:layout_marginTop="16dp"
             android:text="@{resource.message ?? @string/error_unknown_error}"
             app:showOrHide="@{resource.status == Status.ERROR}"
-            tools:text="Loading..."/>
+            tools:text="Loading..." />
     </LinearLayout>
 </layout>

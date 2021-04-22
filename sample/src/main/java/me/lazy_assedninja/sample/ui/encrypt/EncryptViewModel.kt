@@ -1,7 +1,6 @@
 package me.lazy_assedninja.sample.ui.encrypt
 
 import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

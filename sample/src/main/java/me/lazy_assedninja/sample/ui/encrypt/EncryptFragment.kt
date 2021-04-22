@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo.IME_ACTION_DONE
+import android.view.inputmethod.EditorInfo.IME_ACTION_NEXT
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +19,6 @@ import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
 import me.lazy_assedninja.sample.databinding.FragmentEncryptBinding
 import me.lazy_assedninja.sample.ui.index.MainActivity
 import me.lazy_assedninja.sample.utils.autoCleared
-import me.lazy_assedninja.sample.view_model.ViewModelFactory
 import javax.inject.Inject
 
 class EncryptFragment : BaseFragment() {
@@ -79,9 +79,14 @@ class EncryptFragment : BaseFragment() {
                     position: Int,
                     id: Long
                 ) {
-                    binding.tilIv.visibility =
-                        if (binding.spinnerEncryptPattern.selectedItem.toString() == "ECB") View.GONE
-                        else View.VISIBLE
+                    view?.let { v -> dismissKeyboard(v.windowToken) }
+                    if (binding.spinnerEncryptPattern.selectedItem.toString() == "ECB") {
+                        binding.tilIv.visibility = View.GONE
+                        binding.tilKey.editText?.imeOptions = IME_ACTION_DONE
+                    } else {
+                        binding.tilIv.visibility = View.VISIBLE
+                        binding.tilKey.editText?.imeOptions = IME_ACTION_NEXT
+                    }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {

@@ -90,21 +90,21 @@ class EncryptFragment : BaseFragment() {
         }
 
         binding.btEncrypt.setOnClickListener {
-            viewModel.isLoading.set(true)
             handleData(it, true)
         }
         binding.btDecrypt.setOnClickListener {
-            viewModel.isLoading.set(true)
             handleData(it, false)
         }
 
         viewModel.result.observe(viewLifecycleOwner) { result ->
             binding.tilData.editText?.setText(result)
+            viewModel.isLoading.set(false)
         }
     }
 
     private fun handleData(view: View, isEncrypt: Boolean) {
         dismissKeyboard(view.windowToken)
+        viewModel.isLoading.set(true)
 
         val type = binding.spinnerEncryptType.selectedItem.toString()
         var data = ""
@@ -112,42 +112,40 @@ class EncryptFragment : BaseFragment() {
         val transformation = binding.spinnerEncryptType.selectedItem.toString() + "/" +
                 binding.spinnerEncryptPattern.selectedItem.toString() + "/" +
                 binding.spinnerFilling.selectedItem.toString()
-        var iv = ""
+        var iv: String? = null
         context?.let { context ->
             binding.tilData.editText?.let { it ->
                 if (it.text.isEmpty()) {
-                    Toast.makeText(
-                        context,
-                        R.string.error_data_can_not_be_empty,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    binding.tilData.error = context.getString(R.string.error_data_can_not_be_empty)
+                    viewModel.isLoading.set(false)
                     return
                 } else {
+                    binding.tilData.error = null
                     data = it.text.toString()
                 }
             }
             binding.tilKey.editText?.let { it ->
                 if (it.text.isEmpty()) {
-                    Toast.makeText(
-                        context,
-                        R.string.error_password_can_not_be_empty,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    binding.tilKey.error =
+                        context.getString(R.string.error_password_can_not_be_empty)
+                    viewModel.isLoading.set(false)
                     return
                 } else {
+                    binding.tilKey.error = null
                     key = it.text.toString()
                 }
             }
-            binding.tilIv.editText?.let { it ->
-                if (it.text.isNotEmpty() && it.text.length != 16) {
-                    Toast.makeText(
-                        context,
-                        R.string.error_iv_length_need_to_be_sixteen,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return
-                } else {
-                    iv = it.text.toString()
+            if (binding.tilIv.visibility != View.GONE) {
+                binding.tilIv.editText?.let { it ->
+                    if (it.text.length != 16) {
+                        binding.tilIv.error =
+                            context.getString(R.string.error_iv_length_need_to_be_sixteen)
+                        viewModel.isLoading.set(false)
+                        return
+                    } else {
+                        binding.tilIv.error = null
+                        iv = it.text.toString()
+                    }
                 }
             }
         }

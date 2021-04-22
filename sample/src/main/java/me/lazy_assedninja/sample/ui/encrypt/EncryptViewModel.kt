@@ -23,7 +23,6 @@ class EncryptViewModel @Inject constructor(private val encryptUtils: EncryptUtil
                 "DES" -> result.value =
                     encryptUtils.encryptDES2Base64(data, key, transformation, iv)
             }
-            isLoading.set(false)
         }
     }
 
@@ -35,7 +34,6 @@ class EncryptViewModel @Inject constructor(private val encryptUtils: EncryptUtil
                 "DES" -> result.value =
                     encryptUtils.decryptBase64DES(data, key, transformation, iv)
             }
-            isLoading.set(false)
         }
     }
 }

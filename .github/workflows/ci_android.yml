@@ -13,9 +13,29 @@ on:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  gradle_vaildation:
+    name: Validate Gradle Wrapper
+    
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+      
   apk:
     name: Generate APK
+    
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    # Identifies "gradle_vaildation" jobs that must complete successfully before this job will run.
+    needs: gradle_vaildation
     
     steps:
     
@@ -47,6 +67,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
+    # Identifies "gradle_vaildation" jobs that must complete successfully before this job will run.
+    needs: gradle_vaildation
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     
@@ -60,9 +83,11 @@ jobs:
   Instrumented_unit_tests:
     name: Instrumented Unit Tests With Firebase Test Lab
     
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
     # Identifies "apk" jobs that must complete successfully before this job will run.
     needs: apk
-    runs-on: ubuntu-latest
     
     steps:
     

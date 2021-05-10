@@ -3,6 +3,7 @@ import me.lazy_assedninja.plugins.*
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -34,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -41,6 +46,9 @@ dependencies {
     implementation AndroidX.constraintLayout
     implementation AndroidX.core
     implementation Kotlin.stdlib
+
+    // Recyclerview
+    implementation AndroidX.recyclerview
 
     // Unit Test
     testImplementation Junit.junit

@@ -12,6 +12,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.lazy_assedninja.library_dagger.ui.BaseFragment
 import me.lazy_assedninja.sample.R
@@ -101,10 +102,10 @@ class EncryptFragment : BaseFragment() {
             handleData(it, false)
         }
 
-        viewModel.result.observe(viewLifecycleOwner) { result ->
+        viewModel.result.observe(viewLifecycleOwner, Observer { result ->
             binding.tilData.editText?.setText(result)
             viewModel.isLoading.set(false)
-        }
+        })
     }
 
     private fun handleData(view: View, isEncrypt: Boolean) {

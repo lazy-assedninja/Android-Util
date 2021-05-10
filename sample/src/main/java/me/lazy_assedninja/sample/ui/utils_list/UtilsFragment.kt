@@ -74,6 +74,6 @@ class UtilsFragment : BaseFragment() {
     }
 
     private fun initData() {
-        adapter.submitList(viewModel.loadUtils())
+        adapter.submitList(viewModel.utilsList)
     }
 }

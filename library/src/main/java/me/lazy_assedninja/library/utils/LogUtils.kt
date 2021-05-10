@@ -1,36 +1,37 @@
 package me.lazy_assedninja.library.utils
 
-import android.util.Log
 import me.lazy_assedninja.library.BuildConfig
+import me.lazy_assedninja.library.testing.OpenForTesting
 
 @Suppress("unused")
+@OpenForTesting
 class LogUtils {
-    companion object{
+    companion object : Log {
         private val isDeBug: Boolean = BuildConfig.DEBUG
 
-        fun v(tag: String?, msg: String) {
+        override fun v(tag: String?, msg: String) {
             if (!isDeBug) return
-            Log.v(tag, msg)
+            android.util.Log.v(tag, msg)
         }
 
-        fun d(tag: String?, msg: String) {
+        override fun d(tag: String?, msg: String) {
             if (!isDeBug) return
-            Log.d(tag, msg)
+            android.util.Log.d(tag, msg)
         }
 
-        fun i(tag: String?, msg: String) {
+        override fun i(tag: String?, msg: String) {
             if (!isDeBug) return
-            Log.i(tag, msg)
+            android.util.Log.i(tag, msg)
         }
 
-        fun w(tag: String?, msg: String) {
+        override fun w(tag: String?, msg: String) {
             if (!isDeBug) return
-            Log.w(tag, msg)
+            android.util.Log.w(tag, msg)
         }
 
-        fun e(tag: String?, msg: String) {
+        override fun e(tag: String?, msg: String) {
             if (!isDeBug) return
-            Log.e(tag, msg)
+            android.util.Log.e(tag, msg)
         }
     }
 }

@@ -1,7 +1,7 @@
 package me.lazy_assedninja.library_dagger.utils
 
 import me.lazy_assedninja.library_dagger.BuildConfig
-import me.lazy_assedninja.library_dagger.di.OpenForTesting
+import me.lazy_assedninja.library_dagger.testing.OpenForTesting
 import javax.inject.Inject
 import javax.inject.Singleton
 

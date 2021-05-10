@@ -11,6 +11,7 @@ object DependenciesVersions {
     val lifecycle = "2.3.0"
     val room = "2.2.6"
 
+    val archCore = "2.1.0"
     val testJunit = "1.1.2"
     val testEspresso = "3.3.0"
 
@@ -21,10 +22,11 @@ object DependenciesVersions {
     val gson = "2.8.6"
 
     // Kotlin
-    val kotlin = "1.4.32"
+    val kotlin = "1.3.72"
 
     // Third Party
     val glide = "4.12.0"
+    val mockito = "2.25.0"
 
     // Junit
     val junit = "4.13.1"

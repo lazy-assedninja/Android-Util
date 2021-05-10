@@ -1,11 +1,9 @@
-package me.lazy_assedninja.library_dagger.utils
+package me.lazy_assedninja.library.utils
 
 import android.os.Handler
 import android.os.Looper
-import me.lazy_assedninja.library_dagger.testing.OpenForTesting
+import me.lazy_assedninja.library.testing.OpenForTesting
 import java.util.concurrent.Executors
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Global executor pools for the whole application.
@@ -14,7 +12,6 @@ import javax.inject.Singleton
  * webservice requests).
  */
 @Suppress("unused")
-@Singleton
 @OpenForTesting
 class ExecutorUtils(
     private val diskIO: java.util.concurrent.Executor,
@@ -22,7 +19,6 @@ class ExecutorUtils(
     private val mainThread: java.util.concurrent.Executor
 ) : Executor {
 
-    @Inject
     constructor() : this(
         Executors.newSingleThreadExecutor(),
         Executors.newFixedThreadPool(3),

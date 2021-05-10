@@ -1,7 +1,7 @@
 package me.lazy_assedninja.library_dagger.utils
 
 import android.util.Base64
-import me.lazy_assedninja.library_dagger.di.OpenForTesting
+import me.lazy_assedninja.library_dagger.testing.OpenForTesting
 import java.nio.charset.Charset
 import javax.crypto.Cipher
 import javax.crypto.SecretKey

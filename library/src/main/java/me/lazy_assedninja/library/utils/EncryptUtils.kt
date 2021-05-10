@@ -1,6 +1,7 @@
 package me.lazy_assedninja.library.utils
 
 import android.util.Base64
+import me.lazy_assedninja.library.testing.OpenForTesting
 import java.nio.charset.Charset
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
@@ -10,8 +11,9 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 @Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+@OpenForTesting
 class EncryptUtils {
-    companion object{
+    companion object : Encrypt {
 
         /**
          * Return the Base64-encode bytes of DES encryption.
@@ -23,7 +25,12 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the Base64-encode string of DES encryption
          */
-        fun encryptDES2Base64(data: String, key: String, transformation: String, iv: String?): String {
+        override fun encryptDES2Base64(
+            data: String,
+            key: String,
+            transformation: String,
+            iv: String?
+        ): String {
             val content = encryptDES(
                 data.toByteArray(Charset.forName("UTF-8")),
                 key.toByteArray(Charset.forName("UTF-8")),
@@ -49,7 +56,7 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the bytes of DES encryption
          */
-        fun encryptDES(
+        override fun encryptDES(
             data: ByteArray,
             key: ByteArray,
             transformation: String,
@@ -68,7 +75,12 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the string of DES decryption
          */
-        fun decryptBase64DES(data: String, key: String, transformation: String, iv: String?): String {
+        override fun decryptBase64DES(
+            data: String,
+            key: String,
+            transformation: String,
+            iv: String?
+        ): String {
             val content = decryptAES(
                 Base64.decode(data, Base64.NO_WRAP),
                 key.toByteArray(),
@@ -94,7 +106,7 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the bytes of DES decryption
          */
-        fun decryptDES(
+        override fun decryptDES(
             data: ByteArray, key: ByteArray, transformation: String, iv: ByteArray?
         ): ByteArray? {
             return symmetricTemplate(data, key, "DES", transformation, iv, false)
@@ -110,7 +122,12 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the Base64-encode string of AES encryption
          */
-        fun encryptAES2Base64(data: String, key: String, transformation: String, iv: String?): String {
+        override fun encryptAES2Base64(
+            data: String,
+            key: String,
+            transformation: String,
+            iv: String?
+        ): String {
             val content = encryptAES(
                 data.toByteArray(Charset.forName("UTF-8")),
                 key.toByteArray(Charset.forName("UTF-8")),
@@ -136,7 +153,7 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the bytes of AES encryption
          */
-        fun encryptAES(
+        override fun encryptAES(
             data: ByteArray, key: ByteArray, transformation: String, iv: ByteArray?
         ): ByteArray? {
             return symmetricTemplate(data, key, "AES", transformation, iv, true)
@@ -152,7 +169,12 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the string of AES decryption
          */
-        fun decryptBase64AES(data: String, key: String, transformation: String, iv: String?): String {
+        override fun decryptBase64AES(
+            data: String,
+            key: String,
+            transformation: String,
+            iv: String?
+        ): String {
             val content = decryptAES(
                 Base64.decode(data, Base64.NO_WRAP),
                 key.toByteArray(),
@@ -178,7 +200,7 @@ class EncryptUtils {
          *                       protect against subsequent modification.
          * @return the bytes of AES decryption
          */
-        fun decryptAES(
+        override fun decryptAES(
             data: ByteArray, key: ByteArray, transformation: String, iv: ByteArray?
         ): ByteArray? {
             return symmetricTemplate(data, key, "AES", transformation, iv, false)
@@ -201,7 +223,10 @@ class EncryptUtils {
 
                 val cipher = Cipher.getInstance(transformation)
                 if (iv == null || iv.isEmpty()) {
-                    cipher.init(if (isEncrypt) Cipher.ENCRYPT_MODE else Cipher.DECRYPT_MODE, secretKey)
+                    cipher.init(
+                        if (isEncrypt) Cipher.ENCRYPT_MODE else Cipher.DECRYPT_MODE,
+                        secretKey
+                    )
                 } else {
                     cipher.init(
                         if (isEncrypt) Cipher.ENCRYPT_MODE else Cipher.DECRYPT_MODE, secretKey,

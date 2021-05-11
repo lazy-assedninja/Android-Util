@@ -119,41 +119,67 @@ class EncryptFragment : BaseFragment() {
                 binding.spinnerEncryptPattern.selectedItem.toString() + "/" +
                 binding.spinnerFilling.selectedItem.toString()
         var iv: String? = null
+        var infoValidation = true
         context?.let { context ->
             binding.tilData.editText?.let { it ->
                 if (it.text.isEmpty()) {
                     binding.tilData.error = context.getString(R.string.error_data_can_not_be_empty)
-                    viewModel.isLoading.set(false)
-                    return
+                    infoValidation = false
                 } else {
                     binding.tilData.error = null
                     data = it.text.toString()
                 }
             }
             binding.tilKey.editText?.let { it ->
-                if (it.text.isEmpty()) {
+                var keyLength = 0
+                var errorToastID = 0
+                when (binding.spinnerEncryptType.selectedItem.toString()) {
+                    "AES" -> {
+                        keyLength = 16
+                        errorToastID = R.string.error_key_length_need_to_be_sixteen
+                    }
+                    "DES" -> {
+                        keyLength = 8
+                        errorToastID = R.string.error_key_length_need_to_be_eight
+                    }
+                }
+                if (it.text.length != keyLength) {
                     binding.tilKey.error =
-                        context.getString(R.string.error_password_can_not_be_empty)
-                    viewModel.isLoading.set(false)
-                    return
+                        context.getString(errorToastID)
+                    infoValidation = false
                 } else {
                     binding.tilKey.error = null
                     key = it.text.toString()
                 }
             }
             if (binding.tilIv.visibility != View.GONE) {
+                var ivLength = 0
+                var errorToastID = 0
+                when (binding.spinnerEncryptType.selectedItem.toString()) {
+                    "AES" -> {
+                        ivLength = 16
+                        errorToastID = R.string.error_iv_length_need_to_be_sixteen
+                    }
+                    "DES" -> {
+                        ivLength = 8
+                        errorToastID = R.string.error_iv_length_need_to_be_eight
+                    }
+                }
                 binding.tilIv.editText?.let { it ->
-                    if (it.text.length != 16) {
+                    if (it.text.length != ivLength) {
                         binding.tilIv.error =
-                            context.getString(R.string.error_iv_length_need_to_be_sixteen)
-                        viewModel.isLoading.set(false)
-                        return
+                            context.getString(errorToastID)
+                        infoValidation = false
                     } else {
                         binding.tilIv.error = null
                         iv = it.text.toString()
                     }
                 }
             }
+        }
+        if (!infoValidation) {
+            viewModel.isLoading.set(false)
+            return
         }
 
         // Return result

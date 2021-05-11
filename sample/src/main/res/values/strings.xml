@@ -51,5 +51,8 @@
     <string name="error_unknown_error">Unknown error.</string>
     <string name="error_data_can_not_be_empty">Data can\'t be empty.</string>
     <string name="error_password_can_not_be_empty">Password can\'t be empty.</string>
+    <string name="error_key_length_need_to_be_eight">Key length need to be eight.</string>
+    <string name="error_key_length_need_to_be_sixteen">Key length need to be sixteen.</string>
+    <string name="error_iv_length_need_to_be_eight">IV length need to be eight.</string>
     <string name="error_iv_length_need_to_be_sixteen">IV length need to be sixteen.</string>
 </resources>

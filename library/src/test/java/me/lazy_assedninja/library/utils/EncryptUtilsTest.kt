@@ -1,11 +1,13 @@
 package me.lazy_assedninja.library.utils
 
-import me.lazy_assedninja.library.base.BaseTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
-class EncryptUtilsTest : BaseTest() {
+@RunWith(RobolectricTestRunner::class)
+class EncryptUtilsTest {
 
     private val data = "lazy-assedninja"
     private val resultAES = "0bkMkDp5AJydMiyy7Thh7g=="

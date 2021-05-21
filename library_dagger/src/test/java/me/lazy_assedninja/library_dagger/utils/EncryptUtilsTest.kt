@@ -1,11 +1,13 @@
 package me.lazy_assedninja.library_dagger.utils
 
-import me.lazy_assedninja.library_dagger.base.BaseTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
-class EncryptUtilsTest : BaseTest() {
+@RunWith(RobolectricTestRunner::class)
+class EncryptUtilsTest {
 
     private val encryptUtils = EncryptUtils(LogUtils())
 

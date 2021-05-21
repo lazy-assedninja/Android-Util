@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import me.lazy_assedninja.library_dagger.ui.BaseFragment
@@ -17,7 +18,6 @@ import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
 import me.lazy_assedninja.sample.databinding.FragmentUtilsBinding
 import me.lazy_assedninja.sample.ui.index.MainActivity
 import me.lazy_assedninja.sample.utils.autoCleared
-import me.lazy_assedninja.sample.view_model.ViewModelFactory
 import javax.inject.Inject
 
 class UtilsFragment : BaseFragment() {
@@ -28,7 +28,7 @@ class UtilsFragment : BaseFragment() {
     @Inject
     lateinit var executorUtils: ExecutorUtils
 
-    private var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
+    var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -59,6 +59,8 @@ class UtilsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loadUtilsList()
+
         adapter = UtilsListAdapter(dataBindingComponent, executorUtils) {
             when (it.name) {
                 getString(R.string.title_encrypt_utils_demo) -> {
@@ -70,10 +72,13 @@ class UtilsFragment : BaseFragment() {
         }
         binding.utilsList.adapter = adapter
 
-        initData()
+        initUtilsList(viewModel)
     }
 
-    private fun initData() {
-        adapter.submitList(viewModel.utilsList)
+    private fun initUtilsList(viewModel: UtilsViewModel) {
+        viewModel.utilsList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+            viewModel.isLoading.set(false)
+        })
     }
 }

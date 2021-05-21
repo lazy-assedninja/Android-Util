@@ -233,7 +233,6 @@ class EncryptUtils {
                         IvParameterSpec(iv)
                     )
                 }
-
                 cipher.doFinal(data)
             } catch (e: Throwable) {
                 LogUtils.e("EncryptUtils: ", e.toString())

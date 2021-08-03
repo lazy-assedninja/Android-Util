@@ -63,7 +63,7 @@ dependencies {
     // Robolectric
     testImplementation ThirdParty.robolectric
 
-    // Unit Test
+    // Test
     testImplementation Junit.junit
     androidTestImplementation AndroidX.testJunit
     androidTestImplementation AndroidX.testEspresso

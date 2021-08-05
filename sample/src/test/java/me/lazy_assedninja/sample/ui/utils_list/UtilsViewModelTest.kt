@@ -34,7 +34,7 @@ class UtilsViewModelTest {
     }
 
     @Test
-    fun getUtilsList(){
+    fun getUtilsList() {
         utilsViewModel.loadUtilsList()
         verify(repository).loadUtils()
     }

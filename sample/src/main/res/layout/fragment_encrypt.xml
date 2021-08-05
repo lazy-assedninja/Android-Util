@@ -22,8 +22,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:title="@string/title_encrypt_utils_demo" />
+                app:layout_scrollFlags="scroll|enterAlways" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -37,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:paddingBottom="20dp">
 
-                <Spinner
+                <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner_encrypt_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,7 +45,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Spinner
+                <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner_encrypt_pattern"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -55,7 +54,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/spinner_encrypt_type" />
 
-                <Spinner
+                <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner_filling"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

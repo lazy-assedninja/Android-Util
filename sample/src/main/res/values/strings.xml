@@ -8,8 +8,8 @@
     <string name="title_encrypt_utils_demo">EncryptUtils Demo</string>
 
     <!-- Navigation -->
-    <string name="navigation_utils_fragment">UtilsFragment</string>
-    <string name="navigation_encrypt_fragment">EncryptFragment</string>
+    <string name="navigation_utils_fragment">Utils</string>
+    <string name="navigation_encrypt_fragment">Encrypt Utils</string>
 
     <!-- Encrypt Title -->
     <string name="title_parameter_settings">Parameter Settings</string>

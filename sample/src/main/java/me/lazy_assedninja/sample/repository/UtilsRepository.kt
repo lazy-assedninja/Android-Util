@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @OpenForTesting
 class UtilsRepository @Inject constructor(private val context: Context) {
 
-    fun loadUtils() : List<Utils>{
+    fun loadUtils(): List<Utils> {
         return listOf(
             Utils(context.getString(R.string.title_encrypt_utils_demo))
         )

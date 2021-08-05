@@ -11,6 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import me.lazy_assedninja.library_dagger.ui.BaseFragment
 import me.lazy_assedninja.library_dagger.utils.ExecutorUtils
 import me.lazy_assedninja.sample.R
@@ -28,7 +30,7 @@ class UtilsFragment : BaseFragment() {
     @Inject
     lateinit var executorUtils: ExecutorUtils
 
-    var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
+    private var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -72,7 +74,14 @@ class UtilsFragment : BaseFragment() {
         }
         binding.utilsList.adapter = adapter
 
+        initNavigationUI()
         initUtilsList(viewModel)
+    }
+
+    private fun initNavigationUI() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
     }
 
     private fun initUtilsList(viewModel: UtilsViewModel) {

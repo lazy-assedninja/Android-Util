@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    private fun initDagger(){
+    private fun initDagger() {
         // Creates an instance of main component by grabbing the factory from the app graph
         mainComponent = (application as MyApplication).appComponent
             .mainComponent().create()

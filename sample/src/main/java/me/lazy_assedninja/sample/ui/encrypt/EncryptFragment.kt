@@ -14,6 +14,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import me.lazy_assedninja.library_dagger.ui.BaseFragment
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
@@ -106,6 +109,14 @@ class EncryptFragment : BaseFragment() {
             binding.tilData.editText?.setText(result)
             viewModel.isLoading.set(false)
         })
+
+        initNavigationUI()
+    }
+
+    private fun initNavigationUI() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
     }
 
     private fun handleData(view: View, isEncrypt: Boolean) {

@@ -106,39 +106,37 @@ class EncryptFragment : BaseFragment() {
     }
 
     private fun checkInputData(isEncrypt: Boolean) {
-        context?.let { context ->
-            val type = binding.spinnerEncryptType.selectedItem.toString()
-            val data = binding.tilData.editText?.text?.toString().let {
-                if (it.isNullOrEmpty()) {
-                    binding.tilData.error = context.getString(R.string.error_data_can_not_be_empty)
-                    return@checkInputData
-                } else {
-                    binding.tilData.error = null
-                    it
-                }
-            }
-            val key = binding.tilKey.editText?.text?.toString().let {
-                if (it.isNullOrEmpty()) {
-                    binding.tilKey.error = context.getString(R.string.error_key_can_not_be_empty)
-                    return@checkInputData
-                } else {
-                    binding.tilKey.error = null
-                    it
-                }
-            }
-            val transformation = binding.spinnerEncryptType.selectedItem.toString() + "/" +
-                    binding.spinnerEncryptPattern.selectedItem.toString() + "/" +
-                    binding.spinnerFilling.selectedItem.toString()
-            val iv = binding.tilIv.editText?.text?.toString().let {
-                binding.tilIv.error = null
+        val type = binding.spinnerEncryptType.selectedItem.toString()
+        val data = binding.tilData.editText?.text?.toString().let {
+            if (it.isNullOrEmpty()) {
+                binding.tilData.error = getString(R.string.error_data_can_not_be_empty)
+                return@checkInputData
+            } else {
+                binding.tilData.error = null
                 it
             }
-
-            if (isEncrypt) {
-                viewModel.encrypt(type, data, key, transformation, iv)
+        }
+        val key = binding.tilKey.editText?.text?.toString().let {
+            if (it.isNullOrEmpty()) {
+                binding.tilKey.error = getString(R.string.error_key_can_not_be_empty)
+                return@checkInputData
             } else {
-                viewModel.decrypt(type, data, key, transformation, iv)
+                binding.tilKey.error = null
+                it
             }
+        }
+        val transformation = binding.spinnerEncryptType.selectedItem.toString() + "/" +
+                binding.spinnerEncryptPattern.selectedItem.toString() + "/" +
+                binding.spinnerFilling.selectedItem.toString()
+        val iv = binding.tilIv.editText?.text?.toString().let {
+            binding.tilIv.error = null
+            it
+        }
+
+        if (isEncrypt) {
+            viewModel.encrypt(type, data, key, transformation, iv)
+        } else {
+            viewModel.decrypt(type, data, key, transformation, iv)
         }
     }
 }

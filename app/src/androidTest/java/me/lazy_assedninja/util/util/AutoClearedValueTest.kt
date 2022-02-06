@@ -18,9 +18,10 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class AutoClearedValueTest {
 
-    @Rule
-    @JvmField
+    @get:Rule
     var activityScenarioRule = ActivityScenarioRule(SingleFragmentActivity::class.java)
+
+    private val testValue = "Lazy-assed Ninja"
 
     private lateinit var testFragment: TestFragment
 
@@ -66,25 +67,24 @@ class AutoClearedValueTest {
         }
         InstrumentationRegistry.getInstrumentation().waitForIdleSync()
 
-        assertThat(testFragment.testValue, `is`("Lazy-assed Ninja"))
+        assertThat(testFragment.testValue, `is`(testValue))
     }
 
     @Test
     fun doNotClearForChildFragment() {
-        testFragment.childFragmentManager.beginTransaction()
-            .add(Fragment(), "Lazy-assed Ninja").commit()
+        testFragment.childFragmentManager.beginTransaction().add(Fragment(), testValue).commit()
         InstrumentationRegistry.getInstrumentation().waitForIdleSync()
 
-        assertThat(testFragment.testValue, `is`("Lazy-assed Ninja"))
+        assertThat(testFragment.testValue, `is`(testValue))
     }
 
     @Test
     fun doNotClearForDialog() {
         val dialogFragment = DialogFragment()
-        dialogFragment.show(testFragment.parentFragmentManager, "dialog")
+        dialogFragment.show(testFragment.parentFragmentManager, "dialog_fragment")
         dialogFragment.dismiss()
         InstrumentationRegistry.getInstrumentation().waitForIdleSync()
 
-        assertThat(testFragment.testValue, `is`("Lazy-assed Ninja"))
+        assertThat(testFragment.testValue, `is`(testValue))
     }
 }

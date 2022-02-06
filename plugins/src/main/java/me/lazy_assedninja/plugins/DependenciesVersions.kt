@@ -1,35 +1,34 @@
 package me.lazy_assedninja.plugins
 
 object DependenciesVersions {
-    // AndroidX
-    val appCompat = "1.2.0"
-    val constraintLayout = "2.0.4"
-    val navigation = "2.3.2"
-    val recyclerview = "1.1.0"
-    val core = "1.3.2"
-    val lifecycle = "2.3.0"
 
-    val archCore = "2.1.0"
-    val testCore = "1.1.0"
-    val testJunit = "1.1.2"
-    val testEspresso = "3.3.0"
+    // AndroidX
+    const val ANDROIDX_CORE = "1.7.0"
+    const val ANDROIDX_APP_COMPAT = "1.4.0"
+    const val LIFECYCLE = "2.4.0"
+    const val LIFECYCLE_ARCH = "2.1.0"
+    const val CONSTRAINT_LAYOUT = "2.1.0"
+    const val NAVIGATION = "2.3.5"
+    const val RECYCLER_VIEW = "1.2.1"
+
+    const val ANDROIDX_ARCH_CORE = "2.1.0"
+    const val ANDROIDX_TEST_JUNIT = "1.1.3"
+    const val ANDROIDX_TEST_ESPRESSO = "3.4.0"
 
     // Google
-    val googleMaterial = "1.2.1"
-    val easyPermission = "3.0.0"
-    val dagger = "2.33"
-    val gson = "2.8.6"
+    const val GOOGLE_MATERIAL = "1.4.0"
+    const val DAGGER = "2.40.5"
+    const val GSON = "2.8.9"
 
     // Kotlin
-    val kotlin = "1.4.21"
-    val coroutinesTest = "1.4.3"
+    const val KOTLIN = "1.6.0"
+    const val TEST_COROUTINES = "1.6.0"
 
     // Third Party
-    val glide = "4.12.0"
-    val mockito = "2.25.0"
-
-    val robolectric = "4.5.1"
-
-    // Junit
-    val junit = "4.13.1"
+    const val GLIDE = "4.12.0"
+    const val JUNIT = "4.13.2"
+    const val MOCKITO = "2.25.0"
+    const val MOCK_WEB_SERVER = "4.9.3"
+    const val TIMBER = "5.0.1"
+    const val ROBOLECTRIC = "4.7.3"
 }

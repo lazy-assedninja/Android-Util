@@ -8,19 +8,20 @@ plugins {
 }
 
 allOpen {
+
     // allows mocking for classes w/o directly opening them for release builds
-    annotation 'me.lazy_assedninja.library_dagger.testing.OpenClass'
+    annotation 'me.lazy_assedninja.util.library.testing.OpenClass'
 }
 
 android {
-    compileSdkVersion ConfigVersions.compileSdkVersion
-    buildToolsVersion ConfigVersions.buildToolsVersion
+    compileSdkVersion ConfigVersions.COMPILE_SDK_VERSION
+    buildToolsVersion ConfigVersions.BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion ConfigVersions.minLibrarySdkVersion
-        targetSdkVersion ConfigVersions.targetSdkVersion
-        versionCode ConfigVersions.versionCode
-        versionName ConfigVersions.versionName
+        minSdkVersion ConfigVersions.MIN_LIBRARY_SDK_VERSION
+        targetSdkVersion ConfigVersions.TARGET_SDK_VERSION
+        versionCode ConfigVersions.VERSION_CODE
+        versionName ConfigVersions.VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,7 +29,14 @@ android {
 
     buildTypes {
         release {
+
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
             minifyEnabled false
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -52,19 +60,19 @@ android {
 }
 
 dependencies {
-    implementation AndroidX.appCompat
-    implementation AndroidX.constraintLayout
-    implementation AndroidX.core
-    implementation Kotlin.stdlib
+    implementation Kotlin.STDLIB
+    implementation AndroidX.CORE
+    implementation AndroidX.APP_COMPAT
+    implementation AndroidX.CONSTRAINT_LAYOUT
 
     // Recyclerview
-    implementation AndroidX.recyclerview
-
-    // Robolectric
-    testImplementation ThirdParty.robolectric
+    implementation AndroidX.RECYCLERVIEW
 
     // Test
-    testImplementation Junit.junit
-    androidTestImplementation AndroidX.testJunit
-    androidTestImplementation AndroidX.testEspresso
+    testImplementation ThirdParty.JUNIT
+    androidTestImplementation AndroidX.TEST_JUNIT
+    androidTestImplementation AndroidX.TEST_ESPRESSO
+
+    // Robolectric
+    testImplementation ThirdParty.ROBOLECTRIC
 }

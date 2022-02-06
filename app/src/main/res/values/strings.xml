@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Util</string>
+
+    <!-- Navigation -->
+    <string name="navigation_utils_fragment">Utils</string>
+    <string name="navigation_encrypt_fragment">Encrypt Util</string>
+
+    <!-- Encrypt -->
+    <string name="bt_encrypt">Encrypt</string>
+    <string name="bt_decrypt">Decrypt</string>
+
+    <string-array name="array_encrypt_type">
+        <item>AES</item>
+        <item>DES</item>
+    </string-array>
+    <string-array name="array_encrypt_pattern">
+        <item>ECB</item>
+        <item>CBC</item>
+        <item>CTR</item>
+        <item>OFB</item>
+        <item>CFB</item>
+    </string-array>
+    <string-array name="array_filling">
+        <item>pkcs5padding</item>
+        <item>pkcs7padding</item>
+        <item>zeropadding</item>
+        <item>iso10126</item>
+        <item>ansix923</item>
+        <item>no\ padding</item>
+    </string-array>
+
+    <string name="hint_key">Key</string>
+    <string name="hint_iv">IV</string>
+    <string name="hint_data">Data</string>
+
+    <string name="error_data_can_not_be_empty">Data can\'t be empty.</string>
+    <string name="error_key_can_not_be_empty">Key can\'t be empty.</string>
+</resources>

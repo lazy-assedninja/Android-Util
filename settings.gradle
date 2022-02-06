@@ -1,4 +1,3 @@
-include ':library_dagger'
 include ':library'
-include ':sample'
+include ':app'
 includeBuild 'plugins'

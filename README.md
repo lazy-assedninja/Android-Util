@@ -9,9 +9,34 @@ Integrated utils for Android.
 * JDK 11.0.13
 
 
-## Featuring
-* Encrypt
+## Language
+* Kotlin
 
+
+## Architecture
+* MVVM
+* Clean Architecture
+
+
+## Features
+* Multi Module
+* Navigation
+* Composite Build
+* CI
+* Instrumented Test
+* Unit Test
+
+
+## Plugins
+* Kotlin Parcelize
+* Kotlin AllOpen
+* Navigation SafeArgs
+* Gradle Build
+* Lint
+
+
+## Utils
+* Encrypt
 
 
 ## Reports
